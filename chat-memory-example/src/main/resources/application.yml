@@ -1,0 +1,29 @@
+spring:
+  # Redis 连接配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      # 如果有密码: password: yourpassword
+  application:
+    name: chat-memory-example
+  ai:
+    zhipuai:
+      api-key: b018802065574260ae4463ecc9ad872e.FPyHyG5R8n4GKGUu
+      embedding:
+        options:
+          model: embedding-3 #使用嵌入模型的名称
+          dimensions: 256 # 嵌入向量的维度
+
+#    ，这段配置告诉 Spring AI：“请使用 Redis 作为存储和检索 AI 向量数据的地方，并按照以下规则来管理数据。”
+    vectorstore:
+      redis:
+        # 向量索引的名称，Redis 中会创建这个 key 前缀
+        # 定义元数据字段（可选，用于精确过滤）
+        prefix: "doc:"
+        initialize-schema: true # 启动时自动创建索引结构
+#        index-name: my-vector-index
+        # 奇怪，我没有设置索引，效果也是好的。是因为默认创建了一个default-index索引。所以我那个项目的问题在于嵌入模型的问题。
+        #indexName?
+
+

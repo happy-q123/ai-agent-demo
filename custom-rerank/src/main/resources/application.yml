@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: custom-rerank
+
+  ai:
+    zhipuai:
+      api-key: b018802065574260ae4463ecc9ad872e.FPyHyG5R8n4GKGUu
+      embedding:
+        options:
+          model: embedding-3
+          dimensions: 256

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mcp-server
+
+  ai:
+    mcp:
+      server:
+        enabled: true
+        name: my-time-server
+        version: 1.0.0
+        type: SYNC
+        webmvc:
+          sse:
+            path: /mcp/message # ?????
+server:
+  port: 8081

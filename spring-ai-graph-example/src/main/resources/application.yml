@@ -1,0 +1,16 @@
+verify:
+  lifecycle:
+    yaml-property: "我是YAML"
+    value-test: "Value注解属性"
+spring:
+  application:
+    name: spring-ai-agent-example
+  ai:
+    zhipuai:
+#      base-url:
+      api-key: b018802065574260ae4463ecc9ad872e.FPyHyG5R8n4GKGUu
+#
+#      chat:
+#        options:
+#          model:
+#          temperature:
