@@ -1,10 +1,11 @@
-package com.test.bendiollamaqwen3vl4b.service;
+package com.test.multiagentbendiollamaqwen3vl4b.service;
 
-import com.test.bendiollamaqwen3vl4b.advisor.ConversationIdAdvisor;
-import com.test.bendiollamaqwen3vl4b.advisor.HistorySearchAdvisor;
-import com.test.bendiollamaqwen3vl4b.advisor.InformationAdvisor;
-import com.test.bendiollamaqwen3vl4b.advisor.ReRankAdvisor;
+
 import com.test.customrerank.service.ZhiPuRerankService;
+import com.test.multiagentbendiollamaqwen3vl4b.advisor.ConversationIdAdvisor;
+import com.test.multiagentbendiollamaqwen3vl4b.advisor.HistorySearchAdvisor;
+import com.test.multiagentbendiollamaqwen3vl4b.advisor.InformationAdvisor;
+import com.test.multiagentbendiollamaqwen3vl4b.advisor.ReRankAdvisor;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -73,7 +74,6 @@ public class ChatMemoryServiceImpl {
         this.chatClient = chatClientBuilder
                 .defaultSystem("用中文回答，且请将思考时间控制在5s内。在回答时请直接给出答案，不需要说明来源。")
                 .defaultAdvisors(conversationIdAdvisor, historySearchAdvisor, reRankAdvisor,informationAdvisor)
-
                 .defaultToolNames("timeFunction")
                 .defaultToolCallbacks(toolCallbackProvider)
                 .build();

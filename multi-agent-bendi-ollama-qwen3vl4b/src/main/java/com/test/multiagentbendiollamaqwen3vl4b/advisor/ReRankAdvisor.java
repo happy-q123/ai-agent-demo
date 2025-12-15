@@ -1,6 +1,5 @@
-package com.test.bendiollamaqwen3vl4b.advisor;
+package com.test.multiagentbendiollamaqwen3vl4b.advisor;
 
-import com.test.customrerank.dto.RerankResponse;
 import com.test.customrerank.dto.Result;
 import com.test.customrerank.service.ZhiPuRerankService;
 import lombok.extern.slf4j.Slf4j;
@@ -8,14 +7,12 @@ import org.springframework.ai.chat.client.ChatClientRequest;
 import org.springframework.ai.chat.client.ChatClientResponse;
 import org.springframework.ai.chat.client.advisor.api.AdvisorChain;
 import org.springframework.ai.chat.client.advisor.api.BaseAdvisor;
-import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.filter.Filter;
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder;
-import redis.clients.jedis.JedisPooled;
 
 import java.util.List;
 import java.util.Map;

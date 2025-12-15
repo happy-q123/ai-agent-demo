@@ -1,7 +1,7 @@
-package com.test.bendiollamaqwen3vl4b.controller;
+package com.test.multiagentbendiollamaqwen3vl4b.controller;
 
-import com.test.bendiollamaqwen3vl4b.service.ChatMemoryServiceImpl;
-import com.test.bendiollamaqwen3vl4b.service.ChatMemoryServiceImpl;
+import com.test.multiagentbendiollamaqwen3vl4b.service.ChatMemoryServiceImpl;
+import com.test.multiagentbendiollamaqwen3vl4b.service.ChatMemoryServiceImpl;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.document.Document;

@@ -1,0 +1,31 @@
+spring:
+  ai:
+    zhipuai:
+      api-key: b018802065574260ae4463ecc9ad872e.FPyHyG5R8n4GKGUu
+    mcp:
+      client:
+        enabled: true
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8081
+
+    vectorstore:
+      redis:
+#        indexName: my-vector-index
+        indexName: llc
+        prefix: "doc:"
+        initialize-schema: true
+    ollama:
+      base-url: http://localhost:11434
+      read-timeout: 120s
+
+      chat:
+        model: qwen3-vl:4b
+        options:
+          temperature: 0.7
+      embedding:
+#        model: nomic-embed-text:latest  # ???????????
+        model: embeddinggemma:300m  # ???????????
+server:
+  port: 8080

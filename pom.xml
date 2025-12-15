@@ -19,6 +19,8 @@
         <module>chat-memory-example</module>
         <module>bendi-ollama-qwen3vl4b</module>
         <module>mcp-server</module>
+        <module>multi-agent-bendi-ollama-qwen3vl4b</module>
+
     </modules>
 
     <properties>
