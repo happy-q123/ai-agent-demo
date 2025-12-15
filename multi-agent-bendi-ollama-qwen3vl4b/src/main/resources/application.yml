@@ -1,5 +1,7 @@
 spring:
   ai:
+    retry:
+      enabled: false  # 禁用自动重试
     zhipuai:
       api-key: b018802065574260ae4463ecc9ad872e.FPyHyG5R8n4GKGUu
     mcp:
@@ -29,3 +31,4 @@ spring:
         model: embeddinggemma:300m  # ???????????
 server:
   port: 8080
+

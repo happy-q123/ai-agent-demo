@@ -1,21 +1,20 @@
 package com.test.multiagentbendiollamaqwen3vl4b.config;
 
 import org.springframework.ai.embedding.EmbeddingModel;
-import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.redis.RedisVectorStore;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import redis.clients.jedis.JedisPooled;
 
 import java.util.List;
 @Configuration
-public class MyConfig {
+public class VectorStoreConfig {
 //    RedisVectorStore
     //抄官方版的下面
     @Bean
-    public RedisVectorStore vectorStore(EmbeddingModel embeddingModel, JedisConnectionFactory jedisConnectionFactory) {
+    public RedisVectorStore vectorStore(@Qualifier("ollamaEmbeddingModel") EmbeddingModel embeddingModel, JedisConnectionFactory jedisConnectionFactory) {
         // --- 1. 像官方一样构建配置，支持 SSL 和 超时 ---
         redis.clients.jedis.DefaultJedisClientConfig.Builder configBuilder =
                 redis.clients.jedis.DefaultJedisClientConfig.builder();

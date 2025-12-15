@@ -68,7 +68,8 @@ public class GraphConfig {
 
 
         stateGraph.addEdge("translateJuzi",StateGraph.END);
-        stateGraph.addEdge("composeJuzi",StateGraph.END);
+        stateGraph.addEdge("composeJuzi", "translateJuzi");
+//        stateGraph.addEdge("composeJuzi",StateGraph.END);
 
         return stateGraph.compile();
     }

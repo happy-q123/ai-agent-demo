@@ -25,6 +25,7 @@ public class ConversationIdAdvisor implements BaseAdvisor {
     public ChatClientRequest before(ChatClientRequest chatClientRequest, AdvisorChain advisorChain) {
 //        chatClientRequest.context().put(defaultConversationId,conversationId);
         chatClientRequest.context().put(defaultConversationId,"userId");
+        chatClientRequest.context().put("user-query",chatClientRequest.prompt().getUserMessage().getText());
         return chatClientRequest;
     }
 

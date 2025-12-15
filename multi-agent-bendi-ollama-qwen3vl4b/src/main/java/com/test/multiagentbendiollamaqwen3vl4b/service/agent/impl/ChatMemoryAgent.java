@@ -11,7 +11,9 @@ import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.api.Advisor;
 import org.springframework.ai.chat.client.advisor.api.BaseAdvisor;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,37 +27,9 @@ public class ChatMemoryAgent extends AbstractAgentService {
     @Resource
     ZhiPuRerankService zhiPuRerankService;
 
-    public ChatMemoryAgent(ChatClient.Builder chatClientBuilder) {
-        super(chatClientBuilder);
-    }
-
-    /**
-     * description 添加advisor
-     * author zzq
-     * date 2025/12/14 22:42
-     * param
-     * return
-     */
-    @PostConstruct
-    private void initChatMemoryAgent() {
-        initAdvisors();
-        chatClient = chatClient.mutate()
-                .defaultAdvisors(advisors)
-                .build();
-    }
-
-    @Override
-    protected void initProperties() {
-        agentName="ChatMemoryAgent";
-        agentDescription="能够记忆的的agent";
-        systemPrompt="请尽量减少思考用时，回答时直接给出答案即可，不要回复如答案来源等无关的内容。";
-    }
-
-    @Override
-    protected void initChatClient(ChatClient.Builder chatClientBuilder) {
-        chatClient=chatClientBuilder
-                .defaultSystem(systemPrompt)
-                .build();
+    //如果参数名字为ollamaChatClientBuilder，则可以删掉@Qualifier("ollamaChatClientBuilder")的声明
+    public ChatMemoryAgent(@Qualifier("ollamaChatClientBuilder") ChatClient.Builder ollamaChatClientBuilder) {
+        super(ollamaChatClientBuilder);
     }
 
     @Override
@@ -82,11 +56,22 @@ public class ChatMemoryAgent extends AbstractAgentService {
         //信息打印advisor
         InformationAdvisor informationAdvisor = new InformationAdvisor(5);
         advisors.add(informationAdvisor);
+    }
 
+    @Override
+    protected void initProperties() {
+        agentName="ChatMemoryAgent";
+        agentDescription="能够记忆的的agent";
+        systemPrompt="请尽量减少思考用时，回答时直接给出答案即可，不要回复如答案来源等无关的内容。";
     }
 
     @Override
     public Object execute(String query) {
-        return chatClient.prompt(query).call().content();
+        return chatClient.prompt(query).call().chatClientResponse();
+    }
+
+    @Override
+    public Object execute(String query, ChatOptions chatOptions) {
+        return chatClient.prompt(query).options(chatOptions).call().chatClientResponse();
     }
 }
